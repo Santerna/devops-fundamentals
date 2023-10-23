@@ -29,7 +29,7 @@ done
 check_disk_space(){
 
     local total_used_space=`df -h $1 | awk '{print $4 " " $1}' | tail -1`
-    local used_space_percent=`echo ${total_free_space:0:-1}`
+    local used_space_percent=`echo ${total_used_space:0:-1}`
     local free_space_percent=$(( 100 - $used_space_percent ))
 
     if (( $free_space_percent <= ${THRESHOLD_WARNING} )); then
